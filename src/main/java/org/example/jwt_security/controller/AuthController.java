@@ -14,11 +14,11 @@ public class AuthController {
 
     @PostMapping("/register")
     public String register(@RequestBody AuthRequest req) {
-        return service.register(req.username, req.password);
+        return service.register(req.getUsername(), req.getPassword(), req.getRole());
     }
 
     @PostMapping("/login")
     public AuthResponse login(@RequestBody AuthRequest req) {
-        return new AuthResponse(service.login(req.username, req.password));
+        return new AuthResponse(service.login(req.getUsername(), req.getPassword()));
     }
 }

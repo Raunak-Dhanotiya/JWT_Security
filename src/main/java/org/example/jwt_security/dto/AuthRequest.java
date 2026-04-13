@@ -1,6 +1,12 @@
 package org.example.jwt_security.dto;
 
+import lombok.Data;
+
+@Data
 public class AuthRequest {
-    public String username;
-    public String password;
+
+    private String username;
+    private String password;
+    private String role;
+
 }
