@@ -10,14 +10,4 @@ public class TestController {
     public String home(Principal principal) {
         return "Welcome " + principal.getName();
     }
-
-    @GetMapping("/user")
-    public String user() {
-        return "User Access";
-    }
-
-    @GetMapping("/admin")
-    public String admin() {
-        return "Admin Access";
-    }
 }

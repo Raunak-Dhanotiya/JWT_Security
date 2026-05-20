@@ -24,13 +24,11 @@ public class AuthService {
     @Autowired
     private PasswordEncoder encoder;
 
-    public String register(String username, String password, String role) {
+    public String register(String username, String password) {
 
         User user = new User();
         user.setUsername(username);
         user.setPassword(encoder.encode(password));
-        user.setRole(role.toUpperCase());
-
         repo.save(user);
 
         return "User Registered Successfully";
@@ -47,7 +45,7 @@ public class AuthService {
             User user = repo.findByUsername(username)
                     .orElseThrow(() -> new RuntimeException("User not found"));
 
-            return jwtService.generateToken(user.getUsername(), user.getRole());
+            return jwtService.generateToken(user.getUsername());
 
         } else {
             throw new RuntimeException("Invalid credentials");
